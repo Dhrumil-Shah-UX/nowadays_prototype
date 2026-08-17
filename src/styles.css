@@ -284,6 +284,8 @@ textarea { width: 100%; resize: vertical; margin-top: 11px; padding: 10px; borde
 .share-ready { display: flex; align-items: flex-start; gap: 8px; margin-top: 17px; padding: 12px; border-radius: 8px; background: var(--green-soft); color: var(--green); font-size: 11px; }
 .app-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px 0 34px; border-top: 1px solid var(--border); color: var(--subtle); font-size: 10px; }
 .app-footer span { display: inline-flex; align-items: center; gap: 6px; }
+.app-footer a { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); font-weight: 700; text-decoration: none; }
+.app-footer a:hover { color: var(--orange-dark); }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideIn { from { transform: translateX(18px); opacity: .65; } to { transform: translateX(0); opacity: 1; } }

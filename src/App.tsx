@@ -138,6 +138,7 @@ function ModalShell({ children, onClose }: { children: React.ReactNode; onClose:
 
 function App() {
   const query = new URLSearchParams(window.location.search)
+  const deckUrl = `${import.meta.env.BASE_URL}deck.pdf`
   const [activeView, setActiveView] = useState(query.get('view') || 'summary')
   const [activeFilter, setActiveFilter] = useState<FilterKey>('all')
   const [selectedChange, setSelectedChange] = useState<ProposalChange | null>(() => {
@@ -154,7 +155,7 @@ function App() {
     {activeView === 'summary' && <><ImpactCard onFilter={openFilter} /><div id="what-changed"><ChangesSection activeFilter={activeFilter} onFilter={openFilter} onOpen={setSelectedChange} /></div><DecisionView accepted={accepted} onAccept={() => setAccepted(true)} onNegotiate={() => setModal('negotiation')} onShare={() => setModal('share')} /></>}
     {activeView === 'impact' && <NegotiationImpact onOpen={setSelectedChange} onDecision={() => setActiveView('decision')} />}
     {activeView === 'decision' && <DecisionView accepted={accepted} onAccept={() => setAccepted(true)} onNegotiate={() => setModal('negotiation')} onShare={() => setModal('share')} />}
-    <footer className="app-footer"><span><CircleHelp size={14} /> Speculative concept · All figures, proposals, venue names, and timestamps are fictional demo data.</span><span>Human review remains the final step.</span></footer>
+    <footer className="app-footer"><span><CircleHelp size={14} /> Speculative concept · All figures, proposals, venue names, and timestamps are fictional demo data.</span><span><a href={deckUrl} target="_blank" rel="noreferrer">View concept deck <ExternalLink size={12} /></a>Human review remains the final step.</span></footer>
   </main>{selectedChange && <ChangeDrawer change={selectedChange} onClose={() => setSelectedChange(null)} />}{modal === 'negotiation' && <NegotiationModal onClose={() => setModal(null)} />}{modal === 'share' && <ShareModal onClose={() => setModal(null)} />}</div>
 }
 
